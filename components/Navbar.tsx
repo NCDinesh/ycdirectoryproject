@@ -1,5 +1,5 @@
 import { auth, signIn, signOut } from "@/auth";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/dist/server/api-";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
