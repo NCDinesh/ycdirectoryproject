@@ -1,5 +1,5 @@
 import SearchForm from "../../components/SearchForm";
-import Startupcard from "../../components/Startupcard";
+import Startupcard from "@/components/Startupcard";
 
 export default async function Home ({searchParams}) {
   const query = (await searchParams).query
@@ -24,8 +24,9 @@ export default async function Home ({searchParams}) {
     <p className="sub-heading !max-w-3xl">Submit Ideas, Vote on Pitches, and Get Noticed in Virtual</p>
     <SearchForm query={query}></SearchForm>
     </section>
-    <section className="section-container">
-      <p className="text-30-semibold">
+
+    <section className="section_container">
+      <p className="text-30-semibold ">
         {query?`Search results for "${query}"`:'All Startups'}
 
       </p>
