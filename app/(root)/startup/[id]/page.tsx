@@ -4,9 +4,11 @@ import { STARTUP_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 export const experimental_ppr = true;
 import markdownit from "markdown-it";
+import { Skeleton } from "@/components/ui/skeleton";
+import View from "@/components/View";
 
 const md = markdownit();
 
@@ -57,12 +59,17 @@ const page = async ({ params }) => {
           <h3 className="text-30-bold">Pitch Details</h3>
 
           {parsedContent ? (
-            <article className="prose" dangerouslySetInnerHTML={{ __html: parsedContent }} />
+            <article className="prose max-w-4xl font-work-sans break-all" dangerouslySetInnerHTML={{ __html: parsedContent }} />
           ) : (
             <p className="no-result">No details provided </p>
           )}
         </div>
+        <hr className="divider"/>
       </section>
+
+      <Suspense fallback ={<Skeleton className="view_skeleton"></Skeleton>}>
+      <View id={id}></View>
+      </Suspense>
     </>
   );
 };
