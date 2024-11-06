@@ -5,10 +5,11 @@ import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 export default async function Home ({searchParams}) {
-  const query = (await searchParams).query
+  const query = (await searchParams).query;
+  const params = {search : query || null};
 
   // const post = await client.fetch(STARTUPS_QUERY);
-  const {data:post} = await sanityFetch({query: STARTUPS_QUERY});
+  const {data:post} = await sanityFetch({query: STARTUPS_QUERY , params});
   // const post = [
   //   // {
   //   //   _createdAt : new Date(),
