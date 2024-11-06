@@ -1,21 +1,25 @@
+import { client } from "@/sanity/lib/client";
 import SearchForm from "../../components/SearchForm";
 import Startupcard from "@/components/Startupcard";
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home ({searchParams}) {
   const query = (await searchParams).query
-  const post = [
-    {
-      _createdAt : new Date(),
-      views: 55,
-      author: {_id:1, name:"NC Dinesh"},
-      _id:1,
-      description: "This is a description",
-      image: "https://media.istockphoto.com/id/1032935604/photo/ai-robot-thinking.jpg?s=612x612&w=is&k=20&c=F5mcTGLvByMx_0FQCWuIlnNQpQbmgcKfOgBjAeDdD_E=",
-      category: "Robots",
-      title: "We Robots",
 
-    }
-  ]
+  const post = await client.fetch(STARTUPS_QUERY);
+  // const post = [
+  //   // {
+  //   //   _createdAt : new Date(),
+  //   //   views: 55,
+  //   //   author: {_id:1, name:"NC Dinesh"},
+  //   //   _id:1,
+  //   //   description: "This is a description",
+  //   //   image: "https://media.istockphoto.com/id/1032935604/photo/ai-robot-thinking.jpg?s=612x612&w=is&k=20&c=F5mcTGLvByMx_0FQCWuIlnNQpQbmgcKfOgBjAeDdD_E=",
+  //   //   category: "Robots",
+  //   //   title: "We Robots",
+
+  //   // }
+  // ]
   return (
     <>
     <section className="pink_container">
